@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
+import React, {Fragment, Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -18,28 +18,32 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Header} from './components/common';
+//import firebase from 'firebase';
+//import {firebaseKeys} from '../config/keys'
 
-const App = () => {
-  return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-
-          <Header headerText="Authentication" />
-          <Text> An App </Text>
-
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
-  );
+class App extends Component {
+  render(){
+    return (
+      <Fragment>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView>
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}>
+            {global.HermesInternal == null ? null : (
+              <View style={styles.engine}>
+                <Text style={styles.footer}>Engine: Hermes</Text>
+              </View>
+            )}
+  
+            <Header headerText="Authentication" />
+            <Text> An App </Text>
+  
+          </ScrollView>
+        </SafeAreaView>
+      </Fragment>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
