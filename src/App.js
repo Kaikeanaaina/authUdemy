@@ -17,12 +17,15 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import firebase from 'firebase';
 import {Header} from './components/common';
-//import firebase from 'firebase';
-//import {firebaseKeys} from '../config/keys'
+import {firebaseKeys} from '../config/keys';
 
 class App extends Component {
-  render(){
+  componentWillMount(){
+    firebase.initializeApp(firebaseKeys);
+  }
+  render() {
     return (
       <Fragment>
         <StatusBar barStyle="dark-content" />
