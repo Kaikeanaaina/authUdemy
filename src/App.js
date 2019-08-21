@@ -20,9 +20,10 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import firebase from 'firebase';
 import {Header} from './components/common';
 import {firebaseKeys} from '../config/keys';
+import LoginForm from './components/LoginForm';
 
 class App extends Component {
-  componentWillMount(){
+  componentWillMount() {
     firebase.initializeApp(firebaseKeys);
   }
   render() {
@@ -38,16 +39,15 @@ class App extends Component {
                 <Text style={styles.footer}>Engine: Hermes</Text>
               </View>
             )}
-  
+
             <Header headerText="Authentication" />
-            <Text> An App </Text>
-  
+            <LoginForm />
           </ScrollView>
         </SafeAreaView>
       </Fragment>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
   scrollView: {
