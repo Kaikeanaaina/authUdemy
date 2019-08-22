@@ -23,7 +23,7 @@ import {firebaseKeys} from '../config/keys';
 import LoginForm from './components/LoginForm';
 
 class App extends Component {
-  componentWillMount() {
+  componentDidMount() {
     firebase.initializeApp(firebaseKeys);
   }
   render() {
