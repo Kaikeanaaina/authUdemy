@@ -18,12 +18,12 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import firebase from 'firebase';
-import {Header} from './components/common';
+import {Header, Button, Spinner} from './components/common';
 import {firebaseKeys} from '../config/keys';
 import LoginForm from './components/LoginForm';
 
 class App extends Component {
-  state = {loggedIn: false};
+  state = {loggedIn: null};
 
   componentDidMount() {
     firebase.initializeApp(firebaseKeys);
@@ -36,6 +36,18 @@ class App extends Component {
       }
     });
   }
+
+  renderContent() {
+    switch (this.state.loggedIn) {
+      case true:
+        return <Button>Log Out</Button>;
+      case false:
+        return <LoginForm />;
+      default:
+        return <Spinner size="large" />;
+    }
+  }
+
   render() {
     return (
       <Fragment>
@@ -51,7 +63,7 @@ class App extends Component {
             )}
 
             <Header headerText="Authentication" />
-            <LoginForm />
+            {this.renderContent()}
           </ScrollView>
         </SafeAreaView>
       </Fragment>
