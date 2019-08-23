@@ -23,8 +23,18 @@ import {firebaseKeys} from '../config/keys';
 import LoginForm from './components/LoginForm';
 
 class App extends Component {
+  state = {loggedIn: false};
+
   componentDidMount() {
     firebase.initializeApp(firebaseKeys);
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({loggedIn: true});
+      } else {
+        this.setState({loggedIn: false});
+      }
+    });
   }
   render() {
     return (
